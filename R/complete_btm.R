@@ -1,3 +1,16 @@
+#' Complete BTM (topic modeling)
+#'
+#' @param data Original data.frame/tibble with one column named "text"
+#' @param min_topics Minimum number of topics to model
+#' @param max_topics Maximum number of topics to model
+#'
+#' @return list of two data frames - original dataset with topic numbers appended; data of top n terms with topic numbers and PCA coordinates
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' complete_btm(data, min_topics, max_topics)
+#' }
 complete_btm <- function(data, min_topics, max_topics) {
 
   # 1. POS tagging by model type

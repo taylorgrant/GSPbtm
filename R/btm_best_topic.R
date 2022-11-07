@@ -1,3 +1,17 @@
+#' Find the best topic
+#'
+#' @description Identify the best topic via the lowest coherence score
+#'
+#' @param pca PCA coordinates from `btm_pca_coords()` function
+#' @param coherence_df Coherence data from `btm_coherence()` function
+#'
+#' @return List of fulldata and max and min coordinates for plotting
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' best_topic <- btm_best_topic(pca_coords, coherence)
+#' }
 btm_best_topic <- function(pca, coherence_df){
 
   # extract the xphi and term info from the topic with the best coherence score

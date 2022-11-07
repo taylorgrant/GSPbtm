@@ -2,8 +2,11 @@
 
 export("%>%")
 export(btm_annotate)
+export(btm_best_topic)
 export(btm_buildDTM)
 export(btm_coherence)
+export(btm_mapping)
 export(btm_pca_coords)
 export(btm_topicmodel)
+export(complete_btm)
 importFrom(magrittr,"%>%")

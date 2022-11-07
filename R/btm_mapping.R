@@ -1,3 +1,16 @@
+#' Topic Mapping
+#'
+#' @description Identify the topic for each piece of text in the original dataframe
+#'
+#' @param models List of all potential models run
+#' @param data The original dataframe, annotated via udpipe
+#' @param coherence_df Coherence scores for each model
+#' @param best_topic The selected best topic based upon coherence scores
+#'
+#' @return
+#' @export
+#'
+#' @examples
 btm_mapping <- function(models, data, coherence_df, best_topic) {
   # we have to access the model by list location, not name for predictions
   best_model <- which(names(models) == as.character(coherence_df[which.max(coherence_df$Value),1]))
