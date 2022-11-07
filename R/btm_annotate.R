@@ -14,7 +14,7 @@
 #' }
 btm_annotate <- function(data, modeltype = c('NAV', "NPN", "ADJ")) {
   if (!"text" %in% tolower(colnames(data))) stop("No 'text' column")
-  .datatable.aware=TRUE
+  # had to move data.table to depends b/c of this https://stackoverflow.com/questions/23252231/r-data-table-breaks-in-exported-functions
 
   dataset <- data |>
     janitor::clean_names() |>
