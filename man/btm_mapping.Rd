@@ -21,3 +21,8 @@ List with $modeled_topic containing the topic for each document; $topic_names wi
 \description{
 Identify the topic for each piece of text in the original dataframe
 }
+\examples{
+\dontrun{
+modeled_topic <- btm_mapping(testing_models, anno_data, coherence, best_topic)
+}
+}

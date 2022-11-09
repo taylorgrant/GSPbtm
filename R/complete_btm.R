@@ -5,7 +5,7 @@
 #' @param max_topics Maximum number of topics to model
 #' @param model NAV (noun, adjective, verb); NPN (noun, proper noun); ADJ (adjective)
 #'
-#' @return list of two data frames - original dataset with topic numbers appended; data of top n terms with topic numbers and PCA coordinates
+#' @return list - $df original dataframe with topic numbers joined per row; $fulldata - data of top n terms with topic numbers and PCA coordinates; $range - the min and max for axes when plotting
 #' @export
 #'
 #' @examples
@@ -52,6 +52,7 @@ complete_btm <- function(data, min_topics, max_topics, model) {
   fulldata <- best_topic$fulldata %>%
     dplyr::left_join(topic_names, by = c("newid" = "model_topic"))
 
-  out <- list(df = df, fulldata = fulldata)
+  out <- list(df = df, fulldata = fulldata,
+              range = c(best_topic$min_range, best_topic$max_range))
 }
 

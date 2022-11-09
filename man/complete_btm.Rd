@@ -16,7 +16,7 @@ complete_btm(data, min_topics, max_topics, model)
 \item{model}{NAV (noun, adjective, verb); NPN (noun, proper noun); ADJ (adjective)}
 }
 \value{
-list of two data frames - original dataset with topic numbers appended; data of top n terms with topic numbers and PCA coordinates
+list - $df original dataframe with topic numbers joined per row; $fulldata - data of top n terms with topic numbers and PCA coordinates; $range - the min and max for axes when plotting
 }
 \description{
 Complete BTM (topic modeling)
