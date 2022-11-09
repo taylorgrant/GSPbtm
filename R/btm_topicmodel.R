@@ -10,7 +10,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' n_topics <- 5:20
+#' n_topics <- 5:15
 #' testing_models <- n_topics %>%
 #'   map(btm_topicmodel, data = NAV_reviews) %>%
 #'   set_names(nm = paste0("topicsize_", n_topics))
