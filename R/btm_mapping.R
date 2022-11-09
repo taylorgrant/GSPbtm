@@ -11,6 +11,9 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' modeled_topic <- btm_mapping(testing_models, anno_data, coherence, best_topic)
+#' }
 btm_mapping <- function(models, data, coherence_df, best_topic) {
   # we have to access the model by list location, not name for predictions
   best_model <- which(names(models) == as.character(coherence_df[which.max(coherence_df$Value),1]))

@@ -15,6 +15,9 @@ btm_mapping(models, data, coherence_df, best_topic)
 
 \item{best_topic}{The selected best topic based upon coherence scores}
 }
+\value{
+List with $modeled_topic containing the topic for each document; $topic_names with 5 most frequent nouns for each topic
+}
 \description{
 Identify the topic for each piece of text in the original dataframe
 }
