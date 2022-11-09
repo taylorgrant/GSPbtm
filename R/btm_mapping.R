@@ -7,7 +7,7 @@
 #' @param coherence_df Coherence scores for each model
 #' @param best_topic The selected best topic based upon coherence scores
 #'
-#' @return
+#' @return List with $modeled_topic containing the topic for each document; $topic_names with 5 most frequent nouns for each topic
 #' @export
 #'
 #' @examples
