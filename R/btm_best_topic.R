@@ -32,7 +32,7 @@ btm_best_topic <- function(pca, coherence_df){
 
   # data for tooltip and highcharter::hc plotting
   fulldata <- best_topic$x_phi |>
-    dplyr::left_join(topic_terms) |>
+    dplyr::left_join(topic_terms, by = c("Topic" = "Topic")) |>
     dplyr::arrange(dplyr::desc(frac)) |>
     dplyr::mutate(newid = dplyr::row_number(),
            Topic = paste('Topic', newid),

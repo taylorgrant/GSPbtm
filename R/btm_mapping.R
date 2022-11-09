@@ -34,7 +34,7 @@ btm_mapping <- function(models, data, coherence_df, best_topic) {
     dplyr::rename(model_topic = newid)
 
   topic_names <- data$anno |>
-    dplyr::left_join(modeled_topic) |>
+    dplyr::left_join(modeled_topic, by = c("doc_id" = "doc_id")) |>
     dplyr::group_by(model_topic, upos) |>
     dplyr::count(lemma) |>
     dplyr::filter(upos %in% c("NOUN")) |>

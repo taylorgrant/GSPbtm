@@ -45,8 +45,8 @@ complete_btm <- function(data, min_topics, max_topics, model) {
     dplyr::summarise(topic_nouns = paste(lemma, collapse = ", "))
 
   df <- anno_data$dat %>%
-    dplyr::left_join(modeled_topic$modeled_topic) %>%
-    dplyr::left_join(topic_names)
+    dplyr::left_join(modeled_topic$modeled_topic, by = c("doc_id" = "doc_id")) %>%
+    dplyr::left_join(topic_names, by = c("model_topic" = "model_topic"))
 
   # fulldata is already reordered properly
   fulldata <- best_topic$fulldata %>%
