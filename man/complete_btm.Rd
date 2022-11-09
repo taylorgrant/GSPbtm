@@ -4,7 +4,7 @@
 \alias{complete_btm}
 \title{Complete BTM (topic modeling)}
 \usage{
-complete_btm(data, min_topics, max_topics)
+complete_btm(data, min_topics, max_topics, modeltype)
 }
 \arguments{
 \item{data}{Original data.frame/tibble with one column named "text"}
@@ -12,6 +12,8 @@ complete_btm(data, min_topics, max_topics)
 \item{min_topics}{Minimum number of topics to model}
 
 \item{max_topics}{Maximum number of topics to model}
+
+\item{modeltype}{NAV (noun, adjective, verb); NPN (noun, proper noun); ADJ (adjective)}
 }
 \value{
 list of two data frames - original dataset with topic numbers appended; data of top n terms with topic numbers and PCA coordinates

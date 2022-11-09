@@ -5,6 +5,7 @@
 #' @param data Data frame; the column to be annotated must be named `text`
 #' @param modeltype Type of BTM model that we want to run (noun, adjective, verb; noun, proper noun; adjective only)
 #'
+#' @import data.table
 #' @return A list with original data, annotated text, biterm co-occurrence counts by document, and a subset of annotated data based upon model type
 #' @export
 #'
@@ -43,7 +44,7 @@ btm_annotate <- function(data, modeltype = c('NAV', "NPN", "ADJ")) {
 
   if (modeltype == "NAV") {
     # set up noun,  adjective,  verb data
-    model_biterms <- data.table::as.data.table(biterms[, udpipe::cooccurrence(lemma, relevant = (upos %in% c("NOUN","ADJ", "VERB") & nchar(lemma) > 2 & !lemma %in% stopwords::stopwords("en")), skipgram = 3), by = list(doc_id)])
+    model_biterms <- biterms[, udpipe::cooccurrence(lemma, relevant = (upos %in% c("NOUN","ADJ", "VERB") & nchar(lemma) > 2 & !lemma %in% stopwords::stopwords("en")), skipgram = 3), by = list(doc_id)]
     #
     model_traindata <- subset(anno, upos %in% c("NOUN", "ADJ", "VERB") & !lemma %in% stopwords::stopwords("en") & nchar(lemma) > 2)
     #
