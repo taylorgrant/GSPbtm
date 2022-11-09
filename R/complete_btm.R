@@ -26,12 +26,10 @@ complete_btm <- function(data, min_topics, max_topics, model) {
   # 3a. convert data to DTM for coherence scoring
   dtm <- btm_buildDTM(anno_data)
   # 3b. coherence scoring
-  cat("Determining coherence scores...\n")
   coherence <- purrr::map_dfr(testing_models, btm_coherence, DTM = dtm) |>
     tidyr::pivot_longer(cols = dplyr::everything(),
                         names_to = "Topic", values_to = "Value")
   # 4. pca coordinates and top terms
-  cat("Extracting topic coordinates and top terms per topic...\n")
   pca_coords <- purrr::map(testing_models, btm_pca_coords, data = anno_data)
   # 5. extract the topic with the best coherence
   best_topic <- btm_best_topic(pca_coords, coherence)
