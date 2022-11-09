@@ -3,20 +3,20 @@
 #' @param data Original data.frame/tibble with one column named "text"
 #' @param min_topics Minimum number of topics to model
 #' @param max_topics Maximum number of topics to model
-#' @param modeltype NAV (noun, adjective, verb); NPN (noun, proper noun); ADJ (adjective)
+#' @param model NAV (noun, adjective, verb); NPN (noun, proper noun); ADJ (adjective)
 #'
 #' @return list of two data frames - original dataset with topic numbers appended; data of top n terms with topic numbers and PCA coordinates
 #' @export
 #'
 #' @examples
 #' \dontrun{
-#' complete_btm(data, min_topics, max_topics)
+#' complete_btm(data, min_topics, max_topics, "NAV")
 #' }
-complete_btm <- function(data, min_topics, max_topics, modeltype) {
+complete_btm <- function(data, min_topics, max_topics, model) {
 
   # 1. POS tagging by model type
   cat("Annotating the texts provided...\n")
-  anno_data <- btm_annotate(data, modeltype)
+  anno_data <- btm_annotate(data, model)
   # 2. model across n topics
   cat("Estimating topic models...\n")
   n_topics <- as.integer(min_topics):as.integer(max_topics)
