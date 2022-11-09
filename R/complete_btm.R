@@ -35,7 +35,7 @@ complete_btm <- function(data, min_topics, max_topics, model) {
   pca_coords <- purrr::map(testing_models, btm_pca_coords, data = anno_data)
   # 5. extract the topic with the best coherence
   best_topic <- btm_best_topic(pca_coords, coherence)
-  cat(sprintf('Based on coherence scoring the best model contains %s topics...\n', nrow(best_topic$fulldata)))
+  cat(sprintf('\nBased on coherence scoring the best model contains %s topics...\n\n', nrow(best_topic$fulldata)))
   # 6. Probabilistic mapping of topics back to anno_data
   modeled_topic <- btm_mapping(testing_models, anno_data, coherence, best_topic)
 
