@@ -3,6 +3,7 @@
 #' @param data Original data.frame/tibble with one column named "text"
 #' @param min_topics Minimum number of topics to model
 #' @param max_topics Maximum number of topics to model
+#' @param modeltype NAV (noun, adjective, verb); NPN (noun, proper noun); ADJ (adjective)
 #'
 #' @return list of two data frames - original dataset with topic numbers appended; data of top n terms with topic numbers and PCA coordinates
 #' @export
