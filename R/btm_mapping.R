@@ -37,9 +37,10 @@ btm_mapping <- function(models, data, coherence_df, best_topic) {
     dplyr::left_join(modeled_topic, by = c("doc_id" = "doc_id")) |>
     dplyr::group_by(model_topic, upos) |>
     dplyr::count(lemma) |>
-    dplyr::filter(upos %in% c("NOUN")) |>
+    dplyr::filter(upos %in% c("NOUN", "ADJ")) |>
     dplyr::group_by(model_topic, upos) |>
     dplyr::slice_max(n, n = 5, with_ties = FALSE) |>
+    dplyr::filter(upos == "NOUN" | upos == "ADJ" & n == max(n)) |>
     dplyr::filter(!is.na(model_topic))
   modeled_topic <- list(modeled_topic = modeled_topic, topic_names = topic_names)
   return(modeled_topic)
