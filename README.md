@@ -1,0 +1,58 @@
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+# GSPbtm
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+GSPbtm provides an easy application of the
+[BTM](https://cran.r-project.org/web/packages/BTM/BTM.pdf) package based
+on the [paper](https://xiaohuiyan.github.io/paper/BTM-TKDE.pdf).
+
+Great for use with any short text dataset with three types of models -
+NAV (noun, adjective, verb); NPN (noun, proper noun); (ADJ) (adjective
+only). There is a single wrapper function `complete_btm()` that will run
+the full model. User specifies the minimum and maximum number of topics
+to estimate and the type of model to run, and the model will select the
+best one based upon a calculated coherence score. Because we use a
+background topic supplied by BTM, the topics are generally well defined
+and informative; coherence scores are not overwhelmed by common stop
+words or uninformative terms.
+
+The column with the text to be annotated and modeled must be named
+“text” and the user will be prompted if no column has the name.
+Annotation relies upon the
+[udpipe](https://cran.r-project.org/package=udpipe) package to POS tag
+and determine biterm coocurrence.
+
+Once the best topic is selected, we borrow the Jensen-Shannon Divergence
+and PCA from the [LDAvis](https://github.com/cpsievert/LDAvis) package,
+and extract our X,Y coordinates for each topic. The top 12 terms are
+selected using the relevance and frequency selection criteria from the
+`LDAvis` package and returned as a separate output (note that the
+relevance/frequency split is hardcoded at 0.6).
+
+## Installation
+
+You can install the development version of GSPbtm from
+[GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("taylorgrant/GSPbtm")
+```
+
+## Example
+
+Assuming a data frame with a column named “text”:
+
+``` r
+library(GSPbtm)
+tm_out <- complete_btm(data, min_topics = 5, max_topics = 20, model = "NAV")
+```
+
+Function returns a list: `tm_out$df` is the original dataframe with
+topic numbers joined per row; `tm_out$fulldata` - data of top n terms
+with topic numbers and PCA coordinates; `tm_out$range` - the min and max
+to set axes when plotting.
