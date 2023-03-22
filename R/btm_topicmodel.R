@@ -18,6 +18,7 @@
 btm_topicmodel <- function(n_topics, data) {
   # seed for replicability
   set.seed(2367)
+  cat("Estimating topic ", n_topics, "...\n")
   # note the 1st topic is common terms (background = TRUE), which we will not plot/use
   nav_model <- BTM::BTM(data$model_traindata, biterms = data$model_biterms,
                    k = n_topics,
